@@ -16,19 +16,6 @@ class CarReservation(models.Model):
     end_date = models.DateTimeField(default = now)
     purpose = models.CharField(max_length = 32)
     active = models.BooleanField(default = True)
-
-    def name(self):
-        return self.user.get_full_name()
-
-    def start_date_formatted(self):
-        return format(self.start_date, 'd-m-Y H:i')
-
-    def end_date_formatted(self):
-        return format(self.end_date, 'd-m-Y H:i')
-
-    def __str__(self):
-        return '{}, {}, {} - {}, {}'.format(self.car, self.user.get_full_name(), format(self.start_date, 'd-m-Y H:i'), format(self.end_date, 'd-m-Y H:i'), self.purpose)
-
     class Meta:
         db_table = 'car_reservations'
         ordering = ['end_date']
