@@ -1,3 +1,36 @@
 {
-    "python.pythonPath": "C:\\Users\\michal.bazych\\.virtualenvs\\hub-final-7AwBR6cj\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\michal.bazych\\.virtualenvs\\hub-final-7AwBR6cj\\Scripts\\python.exe",
+    "appService.zipIgnorePattern": [
+        "__pycache__{,/**}",
+        "*.py[cod]",
+        "*$py.class",
+        ".Python{,/**}",
+        "build{,/**}",
+        "develop-eggs{,/**}",
+        "dist{,/**}",
+        "downloads{,/**}",
+        "eggs{,/**}",
+        ".eggs{,/**}",
+        "lib{,/**}",
+        "lib64{,/**}",
+        "parts{,/**}",
+        "sdist{,/**}",
+        "var{,/**}",
+        "wheels{,/**}",
+        "share/python-wheels{,/**}",
+        "*.egg-info{,/**}",
+        ".installed.cfg",
+        "*.egg",
+        "MANIFEST",
+        ".env{,/**}",
+        ".venv{,/**}",
+        "env{,/**}",
+        "venv{,/**}",
+        "ENV{,/**}",
+        "env.bak{,/**}",
+        "venv.bak{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/c47457c7-8291-42ea-b2ea-2ae0020e8c2f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/test-hub",
+    "appService.deploySubpath": ""
 }
