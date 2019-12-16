@@ -24,6 +24,7 @@ export class Rentals extends Component {
                 <th>Reservation</th>
                 <th>Start date</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -31,7 +32,8 @@ export class Rentals extends Component {
                 <tr key={rentals.id}>
                   <td>{rentals.id}</td>
                   <td>{rentals.reservation}</td>
-                  <td>{rentals.start_date}</td>
+                  <td>{rentals.start_date_formatted}</td>
+                  <td> </td>
                   <td>
                     <button className="btn-danger btn-sm btn">
                       Oddaj samochód

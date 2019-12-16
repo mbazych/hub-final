@@ -8,7 +8,8 @@ export class Form extends Component {
     car: "",
     start_date: "",
     end_date: "",
-    purpose: ""
+    purpose: "",
+    user: 1
   };
 
   static propTypes = {
@@ -19,8 +20,8 @@ export class Form extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { car, start_date, end_date, purpose } = this.state;
-    const reservation = { car, start_date, end_date, purpose };
+    const { car, start_date, end_date, purpose, user } = this.state;
+    const reservation = { car, start_date, end_date, purpose, user };
     this.props.addReservations(reservation);
   };
 
@@ -34,7 +35,7 @@ export class Form extends Component {
             <label>Car</label>
             <input
               className="form-control"
-              type="radio"
+              type="text"
               name="car"
               onChange={this.onChange}
               value={car}
