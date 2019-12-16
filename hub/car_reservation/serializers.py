@@ -12,6 +12,10 @@ class CarReservationSerializer(serializers.ModelSerializer):
         fields = "__all__"
 class CarRentalActiveSerializer(serializers.ModelSerializer):
     active = serializers.ReadOnlyField()
+    car = serializers.ReadOnlyField(source='reservation.car')
+    user = serializers.ReadOnlyField(source='reservation.user.username')
+    reservation_start = serializers.ReadOnlyField(source='reservation.start_date_formatted')
+    purpose = serializers.ReadOnlyField(source='reservation.purpose')
     class Meta:
         model = CarRentalActive
-        fields = ('id', 'reservation', 'start_date_formatted', 'active')
+        fields = ('id', 'reservation', 'car', 'user', 'reservation_start', 'purpose', 'start_date_formatted', 'end_date', 'active')

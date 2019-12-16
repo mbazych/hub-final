@@ -5,12 +5,14 @@ import {
   getReservations,
   deleteReservations
 } from "../../actions/reservations";
+import { addRentals } from "../../actions/rentals";
 
 export class Reservations extends Component {
   static propTypes = {
     reservations: PropTypes.array.isRequired,
     getReservations: PropTypes.func.isRequired,
-    deleteReservations: PropTypes.func.isRequired
+    deleteReservations: PropTypes.func.isRequired,
+    addRental: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -44,7 +46,7 @@ export class Reservations extends Component {
                   <td>{reservations.user}</td>
                   <td>
                     <button
-                      onClick={this.props.deleteReservations.bind(
+                      onClick={this.props.addRentals.bind(
                         this,
                         reservations.id
                       )}
@@ -69,5 +71,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   getReservations,
-  deleteReservations
+  deleteReservations,
+  addRentals
 })(Reservations);

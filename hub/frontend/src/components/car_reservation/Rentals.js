@@ -21,9 +21,9 @@ export class Rentals extends Component {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Reservation</th>
+                <th>Reservated car</th>
                 <th>Start date</th>
-                <th></th>
+                <th>Person</th>
                 <th></th>
               </tr>
             </thead>
@@ -31,9 +31,9 @@ export class Rentals extends Component {
               {this.props.rentals.map(rentals => (
                 <tr key={rentals.id}>
                   <td>{rentals.id}</td>
-                  <td>{rentals.reservation}</td>
+                  <td>{rentals.car}</td>
                   <td>{rentals.start_date_formatted}</td>
-                  <td> </td>
+                  <td>{rentals.user}</td>
                   <td>
                     <button className="btn-danger btn-sm btn">
                       Oddaj samochód

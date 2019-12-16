@@ -40,6 +40,16 @@ export class Form extends Component {
               onChange={this.onChange}
               value={car}
             />
+            {/* {/* <select
+              className="form-control"
+              onChange={this.onChange}
+              required
+              name="car"
+              value={car}
+            > }
+              <option>Skoda Superb</option>
+              <option>Skoda Octavia</option>
+            </select> */}
           </div>
           <div className="form-group">
             <label>Start date</label>

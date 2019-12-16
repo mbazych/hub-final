@@ -1,10 +1,16 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime,timedelta
 from django.utils.timezone import now
 from django.utils.dateformat import format
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
+
+def in_three_days():
+    return timezone.now() + timedelta(days=3)
+
+
 class CarReservation(models.Model):
     CAR_CHOICES = [
         ('Skoda Superb', 'Skoda Superb'), 
@@ -15,7 +21,7 @@ class CarReservation(models.Model):
     car = models.CharField(max_length = 32, choices = CAR_CHOICES)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    purpose = models.CharField(max_length = 32)
+    purpose = models.CharField(max_length = 64)
     active = models.BooleanField(default = False)
         
     def name(self):
@@ -37,12 +43,15 @@ class CarReservation(models.Model):
 class CarRentalActive(models.Model):
     reservation = models.ForeignKey(CarReservation, on_delete = models.CASCADE)
     start_date = models.DateTimeField(default = now)
+    end_date = models.DateTimeField(default=in_three_days)
     active = models.BooleanField(default = True)
 
     
     def start_date_formatted(self):
         return format(self.start_date, 'd-m-Y H:i')
 
+    def end_date_formatted(self):
+        return format(self.start_Date, 'd-m-Y H:i')
 
 
     class Meta:

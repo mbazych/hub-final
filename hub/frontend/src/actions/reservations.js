@@ -20,10 +20,9 @@ export const getReservations = () => dispatch => {
 };
 
 // DELETE RESERVATIONS
-export const deleteReservations = id => dispatch => {
+export const deleteReservations = (id, reservation) => dispatch => {
   axios
-    //.delete(`/api/car_reservation/${id}/`)
-    .post(`/api/rental_active/`, id)
+    .delete(`/api/car_reservation/${id}/`) 
     .then(res => {
       dispatch({
         type: DELETE_RESERVATIONS,
