@@ -40,22 +40,5 @@ class CarReservation(models.Model):
         db_table = 'car_reservations'
         ordering = ['end_date']
 
-class CarRentalActive(models.Model):
-    reservation = models.ForeignKey(CarReservation, on_delete = models.CASCADE)
-    start_date = models.DateTimeField(default = now)
-    end_date = models.DateTimeField(default=in_three_days)
-    active = models.BooleanField(default = True)
-
-    
-    def start_date_formatted(self):
-        return format(self.start_date, 'd-m-Y H:i')
-
-    def end_date_formatted(self):
-        return format(self.start_Date, 'd-m-Y H:i')
-
-
-    class Meta:
-        db_table = 'active_rental'
-        ordering = ['start_date']
 
 

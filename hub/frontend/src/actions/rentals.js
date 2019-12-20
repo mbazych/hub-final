@@ -19,7 +19,7 @@ export const getRentals = () => dispatch => {
 // ADD RENTALS // TODO
 export const addRentals = reservation => dispatch => {
   axios
-    .post(`/api/rental_active/`, reservation.id)
+    .post(`/api/rental_active/`, reservation)
     .then(res => {
       dispatch({
         type: ADD_RENTALS,

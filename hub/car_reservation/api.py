@@ -1,6 +1,6 @@
-from car_reservation.models import CarReservation, CarRentalActive
+from car_reservation.models import CarReservation
 from rest_framework import  viewsets, permissions
-from .serializers import CarReservationSerializer, CarRentalActiveSerializer
+from .serializers import CarReservationSerializer
 
 # CarReservationViewSet
 
@@ -11,9 +11,3 @@ class CarReservationViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = CarReservationSerializer
 
-class CarRentalActiveViewSet(viewsets.ModelViewSet):
-    queryset = CarRentalActive.objects.all()
-    permission_classes = [
-        permissions.AllowAny
-    ]
-    serializer_class = CarRentalActiveSerializer

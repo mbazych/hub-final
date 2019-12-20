@@ -44,3 +44,5 @@ export const addReservations = reservation => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+// RENT CARS

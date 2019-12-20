@@ -1,16 +1,22 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getRentals } from "../../actions/rentals";
+import {
+  getReservations,
+  deleteReservations
+} from "../../actions/reservations";
+import { addRentals } from "../../actions/rentals";
 
-export class Rentals extends Component {
+export class Reservations extends Component {
   static propTypes = {
-    rentals: PropTypes.array.isRequired,
-    getRentals: PropTypes.func.isRequired
+    reservations: PropTypes.array.isRequired,
+    getReservations: PropTypes.func.isRequired,
+    deleteReservations: PropTypes.func.isRequired,
+    addRental: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    this.props.getRentals();
+    this.props.getReservations();
   }
 
   render() {
@@ -21,26 +27,36 @@ export class Rentals extends Component {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Reservated car</th>
-                <th>Start date</th>
-                <th>Person</th>
+                <th>Samochód</th>
+                <th>Data początkowa</th>
+                <th>Data końcowa</th>
+                <th>Cel podróży</th>
+                <th>Osoba rezerwująca</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {this.props.rentals.map(rentals => (
-                <tr key={rentals.id}>
-                  <td>{rentals.id}</td>
-                  <td>{rentals.car}</td>
-                  <td>{rentals.start_date_formatted}</td>
-                  <td>{rentals.user}</td>
+              {this.props.reservations.map(reservations => (reservations.active == true) ? (
+                <tr key={reservations.id}>
+                  <td>{reservations.id}</td>
+                  <td>{reservations.car}</td>
+                  <td>{reservations.start_date}</td>
+                  <td>{reservations.end_date}</td>
+                  <td>{reservations.purpose}</td>
+                  <td>{reservations.user}</td>
                   <td>
-                    <button className="btn-danger btn-sm btn">
-                      Oddaj samochód
+                    <button
+                      onClick={this.props.addRentals.bind(
+                        this,
+                        reservations.id
+                      )}
+                      className="btn-success btn-sm btn"
+                    >
+                      Wypożycz
                     </button>
                   </td>
                 </tr>
-              ))}
+              ) : console.log("error"))}
             </tbody>
           </table>
         </Fragment>
@@ -50,9 +66,11 @@ export class Rentals extends Component {
 }
 
 const mapStateToProps = state => ({
-  rentals: state.rentals.rentals
+  reservations: state.reservations.reservations
 });
 
 export default connect(mapStateToProps, {
-  getRentals
-})(Rentals);
+  getReservations,
+  deleteReservations,
+  addRentals
+})(Reservations);

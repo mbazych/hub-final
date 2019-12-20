@@ -36,7 +36,7 @@ export class Reservations extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.reservations.map(reservations => (
+              {this.props.reservations.map(reservations => (reservations.active == false) ? (
                 <tr key={reservations.id}>
                   <td>{reservations.id}</td>
                   <td>{reservations.car}</td>
@@ -56,7 +56,7 @@ export class Reservations extends Component {
                     </button>
                   </td>
                 </tr>
-              ))}
+              ) : console.log("eror"))}
             </tbody>
           </table>
         </Fragment>

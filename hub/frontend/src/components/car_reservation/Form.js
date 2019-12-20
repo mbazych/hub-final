@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addReservations } from "../../actions/reservations";
 
+
+const CAR_CHOICES = [
+        ('Skoda Superb', 'Skoda Superb'), 
+        ('Skoda Octavia', 'Skoda Octavia')
+    ]
 export class Form extends Component {
   state = {
     car: "",
@@ -33,23 +38,17 @@ export class Form extends Component {
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Car</label>
-            <input
-              className="form-control"
-              type="text"
-              name="car"
-              onChange={this.onChange}
-              value={car}
-            />
-            {/* {/* <select
+            <select
               className="form-control"
               onChange={this.onChange}
               required
+              type="text"
               name="car"
               value={car}
-            > }
-              <option>Skoda Superb</option>
-              <option>Skoda Octavia</option>
-            </select> */}
+            > 
+              <option>{CAR_CHOICES[0]}</option>
+              <option>{CAR_CHOICES[1]}</option>
+            </select> 
           </div>
           <div className="form-group">
             <label>Start date</label>
