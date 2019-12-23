@@ -1,7 +1,8 @@
 import {
   GET_RESERVATIONS,
   DELETE_RESERVATIONS,
-  ADD_RESERVATIONS
+  ADD_RESERVATIONS,
+  ADD_RENTAL
 } from "../actions/types.js";
 
 const initialState = {
@@ -23,6 +24,11 @@ export default function(state = initialState, action) {
         )
       };
     case ADD_RESERVATIONS:
+      return {
+        ...state,
+        reservations: [...state.reservations, action.payload]
+      };
+    case ADD_RENTAL:
       return {
         ...state,
         reservations: [...state.reservations, action.payload]

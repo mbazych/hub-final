@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addReservations } from "../../actions/reservations";
 
-
 const CAR_CHOICES = [
-        ('Skoda Superb', 'Skoda Superb'), 
-        ('Skoda Octavia', 'Skoda Octavia')
-    ]
+  ("Skoda Superb", "Skoda Superb"),
+  ("Skoda Octavia", "Skoda Octavia")
+];
 export class Form extends Component {
   state = {
     car: "",
@@ -45,10 +44,10 @@ export class Form extends Component {
               type="text"
               name="car"
               value={car}
-            > 
+            >
               <option>{CAR_CHOICES[0]}</option>
               <option>{CAR_CHOICES[1]}</option>
-            </select> 
+            </select>
           </div>
           <div className="form-group">
             <label>Start date</label>
@@ -56,6 +55,7 @@ export class Form extends Component {
               className="form-control"
               type="datetime-local"
               name="start_date"
+              min="2019.12.23"
               onChange={this.onChange}
               value={start_date}
             />

@@ -3,7 +3,8 @@ import axios from "axios";
 import {
   GET_RESERVATIONS,
   DELETE_RESERVATIONS,
-  ADD_RESERVATIONS
+  ADD_RESERVATIONS,
+  ADD_RENTAL
 } from "./types";
 
 // GET RESERVATIONS
@@ -20,9 +21,9 @@ export const getReservations = () => dispatch => {
 };
 
 // DELETE RESERVATIONS
-export const deleteReservations = (id, reservation) => dispatch => {
+export const deleteReservations = id => dispatch => {
   axios
-    .delete(`/api/car_reservation/${id}/`) 
+    .delete(`/api/car_reservation/${id}/`)
     .then(res => {
       dispatch({
         type: DELETE_RESERVATIONS,
@@ -46,3 +47,16 @@ export const addReservations = reservation => dispatch => {
 };
 
 // RENT CARS
+export const addRental = id => dispatch => {
+  axios
+    .patch(`/api/car_reservation/${id}/`, {
+      active: true
+    })
+    .then(res => {
+      dispatch({
+        type: ADD_RENTAL,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
