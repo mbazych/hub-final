@@ -9,7 +9,7 @@ const CAR_CHOICES = [
 ];
 export class Form extends Component {
   state = {
-    car: "",
+    car: "Skoda Superb",
     start_date: "",
     end_date: "",
     purpose: "",
@@ -27,6 +27,13 @@ export class Form extends Component {
     const { car, start_date, end_date, purpose, user } = this.state;
     const reservation = { car, start_date, end_date, purpose, user };
     this.props.addReservations(reservation);
+    this.setState({
+      car: "Skoda Superb",
+      start_date: "",
+      end_date: "",
+      purpose: "",
+      user: 1
+    });
   };
 
   render() {
@@ -55,7 +62,6 @@ export class Form extends Component {
               className="form-control"
               type="datetime-local"
               name="start_date"
-              min="2019.12.23"
               onChange={this.onChange}
               value={start_date}
             />

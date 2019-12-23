@@ -1,9 +1,32 @@
 import React, { Component, Fragment } from "react";
 import { withAlert } from "react-alert";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 export class Alerts extends Component {
-  componentDidMount() {
-    this.props.alert.show("It Works!");
+  static propTypes = {
+    error: PropTypes.object.isRequired,
+    message: PropTypes.object.isRequired
+  };
+
+  componentDidUpdate(prevProps) {
+    const { error, alert, message } = this.props;
+    if (error !== prevProps.error) {
+      if (error.msg.car)
+        alert.error("There was an error. Please select the car again.");
+      if (error.msg.start_date) alert.error("Select the proper starting date.");
+      if (error.msg.end_date) alert.error("Select the proper ending date.");
+      if (error.msg.purpose)
+        alert.error(
+          "Please fill the purpose field. It should be between 1 to 32 characters."
+        );
+    }
+
+    if (message !== prevProps.message) {
+      if (message.reservationAdded) alert.success(message.reservationAdded);
+
+      if (message.carRented) alert.success(message.carRented);
+    }
   }
 
   render() {
@@ -11,4 +34,9 @@ export class Alerts extends Component {
   }
 }
 
-export default withAlert(Alerts);
+const mapStateToProps = state => ({
+  error: state.errors,
+  message: state.messages
+});
+
+export default connect(mapStateToProps)(withAlert(Alerts));
