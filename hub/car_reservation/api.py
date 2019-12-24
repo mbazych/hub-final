@@ -5,9 +5,15 @@ from .serializers import CarReservationSerializer
 # CarReservationViewSet
 
 class CarReservationViewSet(viewsets.ModelViewSet):
-    queryset = CarReservation.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
+
     serializer_class = CarReservationSerializer
+
+    def get_queryset(self):
+        return self.request.user.car_reservation.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 

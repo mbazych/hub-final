@@ -23,7 +23,7 @@ export class Reservations extends Component {
     return (
       <div>
         <Fragment>
-          <table class="table table-striped">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>ID</th>

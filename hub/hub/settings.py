@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y.%m.%d %H:%M",
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
 }
 
 
@@ -43,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'car_reservation',
     'rest_framework',
-    'frontend'
+    'frontend',
+    'knox', 
+    'accounts'
+    
 ]
 
 MIDDLEWARE = [
