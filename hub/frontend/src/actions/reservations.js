@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import {
   GET_RESERVATIONS,
@@ -10,9 +11,9 @@ import {
 } from "./types";
 
 // GET RESERVATIONS
-export const getReservations = () => dispatch => {
+export const getReservations = () => (dispatch, getState) => {
   axios
-    .get("/api/car_reservation/")
+    .get("/api/car_reservation/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_RESERVATIONS,
@@ -40,9 +41,9 @@ export const deleteReservations = id => dispatch => {
 };
 
 // ADD RESERVATIONS
-export const addReservations = reservation => dispatch => {
+export const addReservations = reservation => (dispatch, getState) => {
   axios
-    .post(`/api/car_reservation/`, reservation)
+    .post(`/api/car_reservation/`, reservation, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ reservationAdded: "Reservation added" }));
       dispatch({

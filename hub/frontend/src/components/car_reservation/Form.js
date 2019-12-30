@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addReservations } from "../../actions/reservations";
+import { createMessage } from "../../actions/messages";
 
 const CAR_CHOICES = [
   ("Skoda Superb", "Skoda Superb"),
   ("Skoda Octavia", "Skoda Octavia")
 ];
+
 export class Form extends Component {
   state = {
     car: "Skoda Superb",
@@ -26,14 +28,24 @@ export class Form extends Component {
     e.preventDefault();
     const { car, start_date, end_date, purpose, user } = this.state;
     const reservation = { car, start_date, end_date, purpose, user };
-    this.props.addReservations(reservation);
-    this.setState({
-      car: "Skoda Superb",
-      start_date: "",
-      end_date: "",
-      purpose: "",
-      user: 1
-    });
+    var d = new Date();
+    var today = d.toISOString().substring(0, 16);
+    console.log(start_date);
+    console.log(today);
+    if (start_date < today && end_date < today) {
+      this.props.createMessage({
+        invalidDate: "Select proper starting or ending date."
+      });
+    } else {
+      this.props.addReservations(reservation);
+      this.setState({
+        car: "Skoda Superb",
+        start_date: "",
+        end_date: "",
+        purpose: "",
+        user: 1
+      });
+    }
   };
 
   render() {
@@ -97,4 +109,4 @@ export class Form extends Component {
   }
 }
 
-export default connect(null, { addReservations })(Form);
+export default connect(null, { addReservations, createMessage })(Form);

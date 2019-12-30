@@ -21,6 +21,9 @@ export class Reservations extends Component {
     return (
       <div>
         <Fragment>
+          <h1 className="text">
+            <strong>Active reservations</strong>
+          </h1>
           <table class="table table-striped">
             <thead>
               <tr>
