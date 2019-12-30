@@ -26,14 +26,15 @@ export const getReservations = () => (dispatch, getState) => {
 };
 
 // DELETE RESERVATIONS
-export const deleteReservations = id => dispatch => {
+export const deleteReservations = id => (dispatch, getState) => {
   axios
-    .delete(`/api/car_reservation/${id}/`)
+    .delete(`/api/car_reservation/${id}/`, tokenConfig(getState))
     .then(res => {
       dispatch({
         type: DELETE_RESERVATIONS,
         payload: id
       });
+      dispatch(createMessage({ reservationDeleted: "Reservation deleted" }));
     })
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))
@@ -57,11 +58,15 @@ export const addReservations = reservation => (dispatch, getState) => {
 };
 
 // RENT CARS
-export const addRental = id => dispatch => {
+export const addRental = id => (dispatch, getState) => {
   axios
-    .patch(`/api/car_reservation/${id}/`, {
-      active: true
-    })
+    .patch(
+      `/api/car_reservation/${id}/`,
+      {
+        active: true
+      },
+      tokenConfig(getState)
+    )
     .then(res => {
       dispatch(createMessage({ carRented: "Car rented" }));
       dispatch({

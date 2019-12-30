@@ -24,7 +24,7 @@ export class Reservations extends Component {
           <h1 className="text">
             <strong>Active reservations</strong>
           </h1>
-          <table class="table table-striped">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>ID</th>
@@ -33,7 +33,7 @@ export class Reservations extends Component {
                 <th>Data końcowa</th>
                 <th>Cel podróży</th>
                 <th>Osoba rezerwująca</th>
-                <th></th>
+                <th>Oddaj samochód</th>
               </tr>
             </thead>
             <tbody>
@@ -47,20 +47,18 @@ export class Reservations extends Component {
                     <td>{reservations.purpose}</td>
                     <td>{reservations.user}</td>
                     <td>
-                      {/* <button
-                        onClick={this.props.addRentals.bind(
+                      <button
+                        onClick={this.props.deleteReservations.bind(
                           this,
                           reservations.id
                         )}
                         className="btn-success btn-sm btn"
                       >
-                        Wypożycz
-                      </button> */}
+                        Oddaj samochód
+                      </button>
                     </td>
                   </tr>
-                ) : (
-                  console.log("error")
-                )
+                ) : null
               )}
             </tbody>
           </table>

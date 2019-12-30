@@ -35,7 +35,7 @@ export class Reservations extends Component {
                 <th>Data końcowa</th>
                 <th>Cel podróży</th>
                 <th>Osoba rezerwująca</th>
-                <th></th>
+                <th>Wypożycz</th>
               </tr>
             </thead>
             <tbody>
@@ -60,9 +60,7 @@ export class Reservations extends Component {
                       </button>
                     </td>
                   </tr>
-                ) : (
-                  console.log("eror")
-                )
+                ) : null
               )}
             </tbody>
           </table>

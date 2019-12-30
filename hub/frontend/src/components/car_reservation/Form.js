@@ -30,8 +30,6 @@ export class Form extends Component {
     const reservation = { car, start_date, end_date, purpose, user };
     var d = new Date();
     var today = d.toISOString().substring(0, 16);
-    console.log(start_date);
-    console.log(today);
     if (start_date < today && end_date < today) {
       this.props.createMessage({
         invalidDate: "Select proper starting or ending date."
