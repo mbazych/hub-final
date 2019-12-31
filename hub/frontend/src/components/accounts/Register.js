@@ -26,8 +26,8 @@ export class Register extends Component {
     } else {
       const newUser = {
         username,
-        password,
-        email
+        email,
+        password
       };
       this.props.register(newUser);
     }
