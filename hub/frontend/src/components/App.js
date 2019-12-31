@@ -14,6 +14,7 @@ import Header from "./layout/Header";
 import Dashboard from "./car_reservation/Dashboard";
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
+import Archive from "./archive/Archive";
 import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
 
@@ -45,6 +46,7 @@ class App extends Component {
                   <PrivateRoute exact path="/" component={Dashboard} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <Route exact path="/archive" component={Archive} />
                 </Switch>
               </div>
             </Fragment>

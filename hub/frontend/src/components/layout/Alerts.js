@@ -20,9 +20,9 @@ export class Alerts extends Component {
         alert.error(
           "Please fill the purpose field. It should be between 1 to 32 characters."
         );
-      // if (error.msg.non_field_errors)
-      //   alert.error(error.msg.non_field_errors.join());
-      // if (error.msg.username) alert.error(error.msg.name.join());
+      if (error.msg.non_field_errors)
+        alert.error(error.msg.non_field_errors.join());
+      if (error.msg.username) alert.error(error.msg.name.join());
     }
 
     if (message !== prevProps.message) {
